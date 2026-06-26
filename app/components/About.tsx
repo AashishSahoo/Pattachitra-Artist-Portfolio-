@@ -64,15 +64,15 @@ export default function About() {
     <section
       id="about"
       ref={sectionRef}
-      className="py-32 relative"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 xl:py-32 relative"
       style={{ background: "var(--warm-white)" }}
     >
       {/* Section label */}
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-4 mb-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-3 sm:gap-4 mb-12 sm:mb-16 md:mb-20">
           <span className="block h-px flex-1" style={{ background: "rgba(200,64,26,0.2)" }} />
           <span
-            className="text-xs tracking-[0.4em] uppercase"
+            className="text-[10px] sm:text-xs tracking-[0.3em] sm:tracking-[0.4em] uppercase whitespace-nowrap"
             style={{ color: "var(--vermilion)", fontFamily: "sans-serif" }}
           >
             The Artist
@@ -80,15 +80,17 @@ export default function About() {
           <span className="block h-px flex-1" style={{ background: "rgba(200,64,26,0.2)" }} />
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-20 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 xl:gap-20 items-start">
           {/* Left: image + awards */}
           <div ref={imgRef}>
             {/* Artist Image */}
             <div
-              className="relative mb-8 rounded-xl overflow-hidden"
+              className="relative mb-6 sm:mb-8 rounded-xl overflow-hidden w-full"
               style={{
                 aspectRatio: "3 / 4",
-                height: 520,
+                height: "auto",
+                minHeight: 300,
+                maxHeight: 520,
                 background: "var(--ink)",
               }}
             >
@@ -98,7 +100,7 @@ export default function About() {
                 alt="Pattachitra artist receiving a National Award"
                 fill
                 priority
-                sizes="(min-width: 1024px) 50vw, 100vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover"
               />
 
@@ -113,21 +115,20 @@ export default function About() {
 
               {/* Decorative Gradient Border */}
               <div
-                className="absolute inset-0 rounded-xl pointer-events-none z-10"
+                className="absolute inset-[-3px] sm:inset-[-4px] md:inset-[-5px] lg:inset-[-6px] rounded-xl pointer-events-none z-10"
                 style={{
-                  border: "6px solid transparent",
-                  background:
-                    "linear-gradient(45deg,var(--vermilion),var(--turmeric),var(--teal),var(--turmeric),var(--vermilion)) border-box",
-                  WebkitMask:
-                    "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+                  border: "3px solid transparent",
+                  background: "linear-gradient(45deg,var(--vermilion),var(--turmeric),var(--teal),var(--turmeric),var(--vermilion)) border-box",
+                  WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
                   WebkitMaskComposite: "xor",
                   maskComposite: "exclude",
+                  borderRadius: "12px",
                 }}
               />
 
               {/* Location Badge */}
               <div
-                className="absolute bottom-4 left-4 z-20 flex items-center gap-2 px-3 py-2 rounded-md text-xs"
+                className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 z-20 flex items-center gap-1.5 sm:gap-2 px-2 sm:px-3 py-1.5 sm:py-2 rounded-md text-[10px] sm:text-xs"
                 style={{
                   background: "rgba(26,15,8,0.85)",
                   color: "var(--turmeric)",
@@ -135,15 +136,15 @@ export default function About() {
                   fontFamily: "sans-serif",
                 }}
               >
-                <Icon icon="mdi:map-marker" width={14} />
-                {artist.location}
+                <Icon icon="mdi:map-marker" width={12} className="sm:w-[14px]" />
+                <span className="truncate max-w-[120px] sm:max-w-none">{artist.location}</span>
               </div>
             </div>
 
             {/* Awards */}
-            <div>
+            <div className="mt-6 sm:mt-8">
               <h3
-                className="text-sm uppercase tracking-widest mb-5"
+                className="text-[11px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-widest mb-3 sm:mb-5"
                 style={{
                   color: "var(--vermilion)",
                   fontFamily: "sans-serif",
@@ -152,18 +153,18 @@ export default function About() {
                 Honours & Awards
               </h3>
 
-              <div ref={awardsRef} className="space-y-3">
+              <div ref={awardsRef} className="space-y-2 sm:space-y-3">
                 {artist.awards.map((a) => (
                   <div
                     key={a.year}
-                    className="flex items-start gap-4 p-4"
+                    className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4"
                     style={{
                       background: "rgba(26,15,8,0.05)",
                       borderLeft: "3px solid var(--turmeric)",
                     }}
                   >
                     <span
-                      className="text-xs font-bold flex-shrink-0 mt-0.5"
+                      className="text-[10px] sm:text-xs font-bold flex-shrink-0 mt-0.5"
                       style={{
                         color: "var(--turmeric)",
                         fontFamily: "sans-serif",
@@ -172,9 +173,9 @@ export default function About() {
                       {a.year}
                     </span>
 
-                    <div>
+                    <div className="min-w-0 flex-1">
                       <div
-                        className="font-semibold text-sm"
+                        className="font-semibold text-xs sm:text-sm"
                         style={{
                           color: "var(--ink)",
                           fontFamily: "serif",
@@ -184,7 +185,7 @@ export default function About() {
                       </div>
 
                       <div
-                        className="text-xs mt-0.5"
+                        className="text-[10px] sm:text-xs mt-0.5"
                         style={{
                           color: "var(--ochre)",
                           fontFamily: "sans-serif",
@@ -198,12 +199,13 @@ export default function About() {
               </div>
             </div>
           </div>
+
           {/* Right: bio + skills */}
           <div ref={textRef}>
             <h2
-              className="mb-6"
+              className="mb-4 sm:mb-5 md:mb-6"
               style={{
-                fontSize: "clamp(2rem, 5vw, 3.5rem)",
+                fontSize: "clamp(1.5rem, 5vw, 3.5rem)",
                 fontFamily: "Georgia, serif",
                 color: "var(--ink)",
                 lineHeight: 1.15,
@@ -214,14 +216,14 @@ export default function About() {
             </h2>
 
             <p
-              className="mb-6 leading-relaxed"
-              style={{ color: "var(--ink)", opacity: 0.7, fontFamily: "Georgia, serif", fontSize: "1.05rem" }}
+              className="mb-4 sm:mb-5 md:mb-6 leading-relaxed text-sm sm:text-base"
+              style={{ color: "var(--ink)", opacity: 0.7, fontFamily: "Georgia, serif", fontSize: "clamp(0.9rem, 1.05vw, 1.05rem)" }}
             >
               {artist.bio}
             </p>
             <p
-              className="mb-10 leading-relaxed"
-              style={{ color: "var(--ink)", opacity: 0.65, fontFamily: "Georgia, serif", fontSize: "1rem" }}
+              className="mb-6 sm:mb-8 md:mb-10 leading-relaxed text-sm sm:text-base"
+              style={{ color: "var(--ink)", opacity: 0.65, fontFamily: "Georgia, serif", fontSize: "clamp(0.85rem, 1vw, 1rem)" }}
             >
               {artist.bioLong}
             </p>
@@ -229,16 +231,16 @@ export default function About() {
             {/* Skills */}
             <div>
               <h3
-                className="text-sm uppercase tracking-widest mb-5"
+                className="text-[11px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-widest mb-3 sm:mb-5"
                 style={{ color: "var(--vermilion)", fontFamily: "sans-serif" }}
               >
                 Disciplines
               </h3>
-              <div ref={skillsRef} className="flex flex-wrap gap-2">
+              <div ref={skillsRef} className="flex flex-wrap gap-1.5 sm:gap-2">
                 {artist.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-2 text-xs font-semibold tracking-wide"
+                    className="px-2.5 sm:px-3 md:px-4 py-1.5 sm:py-2 text-[10px] sm:text-xs font-semibold tracking-wide"
                     style={{
                       background: "var(--ink)",
                       color: "var(--parchment)",
@@ -254,22 +256,23 @@ export default function About() {
 
             {/* Quote */}
             <div
-              className="mt-10 p-6 relative"
+              className="mt-6 sm:mt-8 md:mt-10 p-4 sm:p-5 md:p-6 relative"
               style={{ background: "rgba(200,64,26,0.06)", borderLeft: "4px solid var(--vermilion)" }}
             >
               <Icon
                 icon="mdi:format-quote-open"
-                width={32}
-                style={{ color: "var(--vermilion)", opacity: 0.5, position: "absolute", top: 12, left: 12 }}
+                width={24}
+                className="sm:w-[28px] md:w-[32px]"
+                style={{ color: "var(--vermilion)", opacity: 0.5, position: "absolute", top: 10, left: 10 }}
               />
               <p
-                className="italic pl-6 leading-relaxed"
-                style={{ color: "var(--ink)", fontFamily: "Georgia, serif", fontSize: "1.05rem" }}
+                className="italic pl-4 sm:pl-5 md:pl-6 leading-relaxed text-sm sm:text-base"
+                style={{ color: "var(--ink)", fontFamily: "Georgia, serif", fontSize: "clamp(0.9rem, 1.05vw, 1.05rem)" }}
               >
                 Every colour I grind, every line I draw, is an offering. The canvas is my
                 temple and the brush is my aarati.
               </p>
-              <p className="pl-6 mt-3 text-xs" style={{ color: "var(--ochre)", fontFamily: "sans-serif" }}>
+              <p className="pl-4 sm:pl-5 md:pl-6 mt-2 sm:mt-3 text-[10px] sm:text-xs" style={{ color: "var(--ochre)", fontFamily: "sans-serif" }}>
                 — Sudarshan Mohanty
               </p>
             </div>
