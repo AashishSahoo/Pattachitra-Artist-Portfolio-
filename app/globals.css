@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --vermilion: #C8401A;
+    --deep-red: #8B1A0A;
+    --turmeric: #E8A020;
+    --gold: #D4861A;
+    --ink: #1A0F08;
+    --cream: #F5EDD8;
+    --warm-white: #FBF6EE;
+    --parchment: #EDE0C4;
+    --ochre: #C47E35;
+    --teal: #1A6B6B;
+    --deep-teal: #0D4040;
+    --lotus: #E8607A;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--vermilion);
+    color: var(--cream);
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--ink);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--vermilion);
+    border-radius: 3px;
+  }
+}
